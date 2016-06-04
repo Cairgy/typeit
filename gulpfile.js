@@ -34,7 +34,7 @@ gulp.task('scripts', function() {
 
   gulp.src('dev/typeit.js')
     .pipe(gulp.dest('dist'))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('typeit.min.js'))
     .pipe(gulp.dest('dev'))
     .pipe(gulp.dest('dist'))

@@ -19,7 +19,7 @@
 
   $.typeIt = function(el, opt) {
     this.d = {
-      strings: '',
+      strings: [],
       speed: 100,
       lifeLike: true,
       cursor: true,
