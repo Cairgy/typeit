@@ -114,8 +114,6 @@ var Promo = {
 
     $sections.on('click','#btn-example1', function() {
       if (Promo.examples.$example1.data('typeit') !== undefined) {
-        clearTimeout(Promo.examples.$example1.data('typeit').tTO);
-        clearTimeout(Promo.examples.$example1.data('typeit').dTO);
         Promo.examples.$example1.removeData('typeit');
       }
       Promo.examples.$example1.html('');
@@ -124,8 +122,6 @@ var Promo = {
 
     $sections.on('click','#btn-example2',function() {
       if (Promo.examples.$example2.data('typeit') !== undefined) {
-        clearTimeout(Promo.examples.$example2.data('typeit').tTO);
-        clearTimeout(Promo.examples.$example2.data('typeit').dTO);
         Promo.examples.$example2.removeData('typeit');
       }
       Promo.examples.$example2.html('');
@@ -134,8 +130,6 @@ var Promo = {
 
     $sections.on('click','#btn-example3', function() {
       if (Promo.examples.$example3.data('typeit') !== undefined) {
-        clearTimeout(Promo.examples.$example3.data('typeit').tTO);
-        clearTimeout(Promo.examples.$example3.data('typeit').dTO);
         Promo.examples.$example3.removeData('typeit');
       }
       Promo.examples.$example3.html('');
@@ -144,8 +138,6 @@ var Promo = {
 
     $sections.on('click','#btn-example4', function() {
       if (Promo.examples.$example4.data('typeit') !== undefined) {
-        clearTimeout(Promo.examples.$example4.data('typeit').tTO);
-        clearTimeout(Promo.examples.$example4.data('typeit').dTO);
         Promo.examples.$example4.removeData('typeit');
       }
       Promo.examples.$example4.html('');
