@@ -302,102 +302,129 @@
 
     <table>
 	    <tr>
-	      <th>Option</th>
-	      <th class="middle-th">Description</th>
-	      <th>Default</th>
+			<th>Option</th>
+			<th class="middle-th">Description</th>
+			<th>Default</th>
 	    </tr>
 
 	    <tr>
-	      <td>strings</td>
-	      <td>The string or strings you'd like to type.</td>
-	      <td>"You need a string!"</td>
+			<td>strings</td>
+			<td>(string, array) The string or strings you'd like to type. Define a single string within quotes or define multiple with an array. 
+			<span class="code">
+				strings: 'Hello! This is my string.'
+			</span>
+
+			<span class="code">
+				strings: ['Hello!', 'This is another string.']
+			</span>
+			</td>
+			<td>(nothing)</td>
 	    </tr>
 
 	    <tr>
-	      <td>speed</td>
-	      <td>The speed (milliseconds) at which you want to type.</td>
-	      <td>100</td>
+			<td>speed</td>
+			<td>(number) The speed (milliseconds) at which you want to type.</td>
+			<td>100</td>
 	    </tr>
 
 	    <tr>
-	      <td>lifeLike</td>
-	      <td>Choose whether the plugin types at a constant pace or irregular, life-like pace.</td>
-	      <td>true</td>
+			<td>lifeLike</td>
+			<td>(boolean) Choose whether the plugin types at a constant pace or irregular, life-like pace.</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>cursor</td>
-	      <td>Choose whether you want the blinking cursor to appear when typing.</td>
-	      <td>true</td>
+			<td>cursor</td>
+			<td>(boolean) Choose whether you want the blinking cursor to appear when typing.</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>cursorSpeed</td>
-	      <td>The blinking speed of the cursor.</td>
-	      <td>1000</td>
+			<td>cursorSpeed</td>
+			<td>(number) The blinking speed (milliseconds) of the cursor.</td>
+			<td>1000</td>
 	    </tr>
 
 	    <tr>
-	      <td>breakLines</td>
-	      <td>Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).</td>
-	      <td>true</td>
+			<td>breakLines</td>
+			<td>(boolean) Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>breakDelay</td>
-	      <td>The amount of time between typing multiple strings.</td>
-	      <td>750</td>
+			<td>breakDelay</td>
+			<td>(number) The amount of time (milliseconds) between typing multiple strings.</td>
+			<td>750</td>
 	    </tr>
 
 	    <tr>
-	      <td>startDelay</td>
-	      <td>The amount of time before the plugin begins typing after initializing.</td>
-	      <td>250</td>
+			<td>startDelay</td>
+			<td>(number) The amount of time (milliseconds) before the plugin begins typing after initializing.</td>
+			<td>250</td>
 	    </tr>
 
 	    <tr>
-	      <td>loop</td>
-	      <td>Have your string or strings continuously loop after completing.</td>
-	      <td>false</td>
+			<td>startDelete</td>
+			<td>If <span class="code inline">true</span>, strings within the element upon initialization will first be deleted before typing any strings that are defined via JSON. <strong>Requires that a string or strings are defined within the HTML element before initalizing.</strong> Additionally, if you don't define more strings via JSON or by using companion functions, no further typing will take place after these strings are deleted.
+			<br>
+			<br>
+			
+			<span class="code">
+				&lt;span id="element"&gt;This will first be deleted...&lt;/span&gt;
+				<br>
+				<br>
+				$('#element').typeIt({<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startDelete: true,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strings: 'And then this will be typed.'<br>
+				});
+			</span>
+			</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>loopDelay</td>
-	      <td>The amount of time between looping over a string or set of strings again. Half of this delay will occur after the remaining strings have been successfully deleted, and half will occur before the strings begin to type again.</td>
-	      <td>750</td>
+			<td>loop</td>
+			<td>(boolean) Have your string or strings continuously loop after completing.</td>
+			<td>false</td>
 	    </tr>
 
 	    <tr>
-	      <td>html</td>
-	      <td>Whether HTML tags and entities will be rendered when typing.</td>
-	      <td>true</td>
+			<td>loopDelay</td>
+			<td>(number) The amount of time (milliseconds) between looping over a string or set of strings again. Half of this delay will occur after the remaining strings have been successfully deleted, and half will occur before the strings begin to type again.</td>
+			<td>750</td>
+	    </tr>
+
+	    <tr>
+			<td>html</td>
+			<td>Whether HTML tags and entities will be rendered when typing.</td>
+			<td>true</td>
 	    </tr>
 
 	   	<tr>
-	      <td>autostart</td>
-	      <td>Whether TypeIt will begin typing automatically on page load (true), or only when the element becomes visible in the viewport (false).</td>
-	      <td>true</td>
+			<td>autoStart</td>
+			<td>Whether TypeIt will begin typing automatically on page load (true), or only when the element becomes visible in the viewport (false).</td>
+			<td>true</td>
 	    </tr>
 
 	   	<tr>
-	      <td>callback</td>
-	      <td>
-	      	A function that executes after your typing has completed. Must be passed as a function. Example: 
+			<td>callback</td>
+			<td>
+			A function that executes after your typing has completed. Must be passed as a function. Example: 
 
-	      	<span class="code">
-	      		// BAD :(<br>
-	      		callback: alert('done!');
-	      	</span>
+			<span class="code">
+				// BAD :(<br>
+				callback: alert('done!');
+			</span>
 
-	      	<span class="code">
-	      		// GOOD :)<br>
-	      		callback: function() {<br>
-	      		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('done!');<br>
-	      		}
-	      	</span>
+			<span class="code">
+				// GOOD :)<br>
+				callback: function() {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('done!');<br>
+				}
+			</span>
 
-	      </td>
-	      <td>nuthin'</td>
+			</td>
+	      <td>(nothing)</td>
 	    </tr>
 
 	</table>
@@ -413,23 +440,6 @@
 		<br>
 		gulp develop
 	</span>
-</section>
-
-		<section class="Section--donate" id="donate">
-	<h3>Donate</h3>
-
-	<p>
-		If I've made your life eaiser in some way by creating this thing and want to kick a small "thank you" my way, I'd very much appreciate it!
-	</p>
-
-	<ul class="HorizontalList">
-		<li>
-			PayPal <a class="Button" target="_blank" href="http://paypal.me/alexmacathur">paypal.me/alexmacarthur</a>
-		</li>
-		<li>
-			Venmo <a class="Button" target="_blank" href="http://venmo.com/amacarthur">venmo.com/amacarthur</a>
-		</li>				
-	</ul>
 </section>
 
 	</main>
@@ -906,7 +916,7 @@ $.fn.tiSettings = function(settings) {
 };
 
 }(jQuery));</script>
-<script>var Promo={examples:{$example1:$("#example1"),$example2:$("#example2"),$example3:$("#example3"),$example4:$("#example4")},init:function(){this.setHeaderSize(),this.smoothScroll(),this.buttonResets(),this.headerTyping(),this.mobileMenu(),this.showCode(),this.fixedMenu(),this.demoForm(),this.example1(),this.example2(),this.example3(),this.example4()},setHeaderSize:function(){$("#header").height($(window).height()),$(".Body--home").find("section").find("h2").typeIt({speed:50,autoStart:!1}),$(".Body--home").find("section").find("h3").typeIt({speed:50,autoStart:!1})},headerTyping:function(){$("#typeit-box").typeIt({speed:100,startDelay:1500,callback:function(){$("#typeit-box-code-link").addClass("is-visible")}}).tiType("A jQuery pl").tiPause(500).tiDelete(12).tiPause(500).tiType("The <strong>most versatile</strong> jquery").tiPause(200).tiDelete(5).tiType("Query typing plugin on the net.").tiPause(500).tiDelete(11).tiPause(350).tiType("on the ").tiPause(600).tiType("<em>planet.</em>")},example1:function(){this.examples.$example1.typeIt({strings:"This is a simple string.",speed:50,autoStart:!1})},example2:function(){this.examples.$example2.typeIt({strings:["This is a great string.","But here is a better one."],speed:50,breakLines:!1,autoStart:!1})},example3:function(){this.examples.$example3.typeIt({strings:["This is a great string.","And here we have another great string."],speed:50,breakLines:!0,autoStart:!1})},example4:function(){this.examples.$example4.typeIt({speed:50,autoStart:!1}).tiType("Wll").tiPause(500).tiDelete(2).tiType("ell, ").tiPause(1e3).tiType("I guess I'm typing..").tiBreak().tiPause(750).tiType(" but I don't really know what to say").tiSettings({speed:700}).tiType("...").tiPause(750).tiSettings({speed:50}).tiDelete().tiType("IS THAT SO <strong>WRONG??</strong>")},buttonResets:function(){var e=$("section");e.on("click","#btn-example1",function(){void 0!==Promo.examples.$example1.data("typeit")&&Promo.examples.$example1.removeData("typeit"),Promo.examples.$example1.html(""),Promo.example1()}),e.on("click","#btn-example2",function(){void 0!==Promo.examples.$example2.data("typeit")&&Promo.examples.$example2.removeData("typeit"),Promo.examples.$example2.html(""),Promo.example2()}),e.on("click","#btn-example3",function(){void 0!==Promo.examples.$example3.data("typeit")&&Promo.examples.$example3.removeData("typeit"),Promo.examples.$example3.html(""),Promo.example3()}),e.on("click","#btn-example4",function(){void 0!==Promo.examples.$example4.data("typeit")&&Promo.examples.$example4.removeData("typeit"),Promo.examples.$example4.html(""),Promo.example4()})},demoForm:function(){$("#iSpeed").val("100"),$("#iBreakDelay").val("750"),$("#iCursorSpeed").val("1000"),$("#iStartDelay").val("250"),$("#iLoopDelay").val("750"),$("#TIInput").on("click","#TISubmit",function(e){e.preventDefault();var t=$("#TIOutput"),i=t.data("typeit");void 0!==i&&(clearTimeout(i.tTO),clearTimeout(i.dTO),i.s.loop=!1,t.removeData()),t.html("");var a,o=[];if(""===$("#stringTI").val())o="You didn't enter a string!";else{a=$("#stringTI").val().split("\n");for(var s=0;s<a.length;s++)void 0!==a[s]&&null!==a[s]&&""!==a[s]&&o.push(a[s])}var l=$("#stringTI").val()?38*o.length+40:75,n=$("#iSpeed").val(),p="true"===$("#iHTML").val()?!0:!1,r="true"===$("#iLifeLike").val()?!0:!1,m="true"===$("#iCursor").val()?!0:!1,u=$("#iCursorSpeed").val(),c="true"===$("#iBreakLines").val()?!0:!1,h=$("#iBreakDelay").val(),d=($("#iBreakStart").val(),$("#iStartDelay").val()),x="true"===$("#iLoop").val()?!0:!1,y=$("#iLoopDelay").val();$("#tempText").animate({opacity:0}),$("#TIOutputBox").animate({height:l},function(){$("html, body").animate({scrollTop:$("#TIOutputBox").offset().top-200},800),setTimeout(function(){t.typeIt({strings:o,speed:Number(n),lifeLike:r,cursor:m,cursorSpeed:Number(u),breakLines:c,breakDelay:Number(h),startDelay:Number(d),loop:x,loopDelay:Number(y),html:p})},800)})})},smoothScroll:function(){$("a[href*=#]:not([href=#])").click(function(){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var e=$(this.hash);if(e=e.length?e:$("[name="+this.hash.slice(1)+"]"),e.length)return $("html,body").animate({scrollTop:e.offset().top},300,function(){$(".SectionList").removeClass("is-open")}),!1}})},mobileMenu:function(){$(".Docs-sidebar");$(".Docs").on("click","#menu-toggle",function(){$(".SectionList").toggleClass("is-open")})},fixedMenu:function(){var e=$(".SectionList");if($(window).width()>600&&e.length){var e=$(".SectionList"),t=$(".Docs-content"),i=e.offset().top,a=e.outerWidth();$(window).scroll(function(){$(this).scrollTop()>i?(e.addClass("is-fixed").css("width",a),t.css("margin-left",a)):(e.removeClass("is-fixed").css("width",""),t.css("margin-left",""))})}},showCode:function(){var e=$("#header"),t=$("#typeit-box-code");e.on("click","#typeit-box-code-link",function(e){t.addClass("is-visible")}),e.on("click","#typeit-box-code-close, #typeit-box-code",function(e){t.removeClass("is-visible")})}};$(document).ready(function(){Promo.init()}),$(window).resize(function(){Promo.setHeaderSize()});</script>
+<script>var Promo={examples:{$example1:$("#example1"),$example2:$("#example2"),$example3:$("#example3"),$example4:$("#example4")},init:function(){this.setHeaderSize(),this.smoothScroll(),this.buttonResets(),this.headerTyping(),this.mobileMenu(),this.showCode(),this.fixedMenu(),this.demoForm(),this.example1(),this.example2(),this.example3(),this.example4()},setHeaderSize:function(){$("#header").height($(window).height()),$(".Body--home").find("section").find("h2").typeIt({speed:50,autoStart:!1}),$(".Body--home").find("section").find("h3").typeIt({speed:50,autoStart:!1})},headerTyping:function(){$("#typeit-box").typeIt({speed:100,startDelay:1250,callback:function(){$("#typeit-box-code-link").addClass("is-visible")}}).tiType("A jQuery pl").tiPause(500).tiDelete(12).tiPause(500).tiType("The <strong>most versatile</strong> jquery").tiPause(200).tiDelete(5).tiType("Query typing plugin on the net.").tiPause(500).tiDelete(11).tiPause(350).tiType("on the ").tiPause(600).tiType("<em>planet.</em>")},example1:function(){this.examples.$example1.typeIt({strings:"This is a simple string.",speed:50,autoStart:!1})},example2:function(){this.examples.$example2.typeIt({strings:["This is a great string.","But here is a better one."],speed:50,breakLines:!1,autoStart:!1})},example3:function(){this.examples.$example3.typeIt({strings:["This is a great string.","And here we have another great string."],speed:50,breakLines:!0,autoStart:!1})},example4:function(){this.examples.$example4.typeIt({speed:50,autoStart:!1}).tiType("Wll").tiPause(500).tiDelete(2).tiType("ell, ").tiPause(1e3).tiType("I guess I'm typing..").tiBreak().tiPause(750).tiType(" but I don't really know what to say").tiSettings({speed:700}).tiType("...").tiPause(750).tiSettings({speed:50}).tiDelete().tiType("IS THAT SO <strong>WRONG??</strong>")},buttonResets:function(){var e=$("section");e.on("click","#btn-example1",function(){void 0!==Promo.examples.$example1.data("typeit")&&Promo.examples.$example1.removeData("typeit"),Promo.examples.$example1.html(""),Promo.example1()}),e.on("click","#btn-example2",function(){void 0!==Promo.examples.$example2.data("typeit")&&Promo.examples.$example2.removeData("typeit"),Promo.examples.$example2.html(""),Promo.example2()}),e.on("click","#btn-example3",function(){void 0!==Promo.examples.$example3.data("typeit")&&Promo.examples.$example3.removeData("typeit"),Promo.examples.$example3.html(""),Promo.example3()}),e.on("click","#btn-example4",function(){void 0!==Promo.examples.$example4.data("typeit")&&Promo.examples.$example4.removeData("typeit"),Promo.examples.$example4.html(""),Promo.example4()})},demoForm:function(){$("#iSpeed").val("100"),$("#iBreakDelay").val("750"),$("#iCursorSpeed").val("1000"),$("#iStartDelay").val("250"),$("#iLoopDelay").val("750"),$("#TIInput").on("click","#TISubmit",function(e){e.preventDefault();var t=$("#TIOutput"),i=t.data("typeit");void 0!==i&&(clearTimeout(i.tTO),clearTimeout(i.dTO),i.s.loop=!1,t.removeData()),t.html("");var a,o=[];if(""===$("#stringTI").val())o="You didn't enter a string!";else{a=$("#stringTI").val().split("\n");for(var s=0;s<a.length;s++)void 0!==a[s]&&null!==a[s]&&""!==a[s]&&o.push(a[s])}var l=$("#stringTI").val()?38*o.length+40:75,n=$("#iSpeed").val(),p="true"===$("#iHTML").val()?!0:!1,r="true"===$("#iLifeLike").val()?!0:!1,m="true"===$("#iCursor").val()?!0:!1,u=$("#iCursorSpeed").val(),c="true"===$("#iBreakLines").val()?!0:!1,h=$("#iBreakDelay").val(),d=($("#iBreakStart").val(),$("#iStartDelay").val()),x="true"===$("#iLoop").val()?!0:!1,y=$("#iLoopDelay").val(),f="true"===$("#iStartDelete").val()?!0:!1;$("#tempText").animate({opacity:0}),$("#TIOutputBox").animate({height:l},function(){$("html, body").animate({scrollTop:$("#TIOutputBox").offset().top-200},800),setTimeout(function(){t.typeIt({strings:o,speed:Number(n),lifeLike:r,cursor:m,cursorSpeed:Number(u),breakLines:c,breakDelay:Number(h),startDelay:Number(d),loop:x,loopDelay:Number(y),html:p,startDelete:f})},800)})})},smoothScroll:function(){$("a[href*=#]:not([href=#])").click(function(){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var e=$(this.hash);if(e=e.length?e:$("[name="+this.hash.slice(1)+"]"),e.length)return $("html,body").animate({scrollTop:e.offset().top},300,function(){$(".SectionList").removeClass("is-open")}),!1}})},mobileMenu:function(){$(".Docs-sidebar");$(".Docs").on("click","#menu-toggle",function(){$(".SectionList").toggleClass("is-open")})},fixedMenu:function(){var e=$(".SectionList");if($(window).width()>600&&e.length){var e=$(".SectionList"),t=$(".Docs-content"),i=e.offset().top,a=e.outerWidth();$(window).scroll(function(){$(this).scrollTop()>i?(e.addClass("is-fixed").css("width",a),t.css("margin-left",a)):(e.removeClass("is-fixed").css("width",""),t.css("margin-left",""))})}},showCode:function(){var e=$("#header"),t=$("#typeit-box-code");e.on("click","#typeit-box-code-link",function(e){t.addClass("is-visible")}),e.on("click","#typeit-box-code-close, #typeit-box-code",function(e){t.removeClass("is-visible")})}};$(document).ready(function(){Promo.init()}),$(window).resize(function(){Promo.setHeaderSize()});</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

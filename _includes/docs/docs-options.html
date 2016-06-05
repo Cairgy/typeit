@@ -3,102 +3,129 @@
 
     <table>
 	    <tr>
-	      <th>Option</th>
-	      <th class="middle-th">Description</th>
-	      <th>Default</th>
+			<th>Option</th>
+			<th class="middle-th">Description</th>
+			<th>Default</th>
 	    </tr>
 
 	    <tr>
-	      <td>strings</td>
-	      <td>The string or strings you'd like to type.</td>
-	      <td>"You need a string!"</td>
+			<td>strings</td>
+			<td>(string, array) The string or strings you'd like to type. Define a single string within quotes or define multiple with an array. 
+			<span class="code">
+				strings: 'Hello! This is my string.'
+			</span>
+
+			<span class="code">
+				strings: ['Hello!', 'This is another string.']
+			</span>
+			</td>
+			<td>(nothing)</td>
 	    </tr>
 
 	    <tr>
-	      <td>speed</td>
-	      <td>The speed (milliseconds) at which you want to type.</td>
-	      <td>100</td>
+			<td>speed</td>
+			<td>(number) The speed (milliseconds) at which you want to type.</td>
+			<td>100</td>
 	    </tr>
 
 	    <tr>
-	      <td>lifeLike</td>
-	      <td>Choose whether the plugin types at a constant pace or irregular, life-like pace.</td>
-	      <td>true</td>
+			<td>lifeLike</td>
+			<td>(boolean) Choose whether the plugin types at a constant pace or irregular, life-like pace.</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>cursor</td>
-	      <td>Choose whether you want the blinking cursor to appear when typing.</td>
-	      <td>true</td>
+			<td>cursor</td>
+			<td>(boolean) Choose whether you want the blinking cursor to appear when typing.</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>cursorSpeed</td>
-	      <td>The blinking speed of the cursor.</td>
-	      <td>1000</td>
+			<td>cursorSpeed</td>
+			<td>(number) The blinking speed (milliseconds) of the cursor.</td>
+			<td>1000</td>
 	    </tr>
 
 	    <tr>
-	      <td>breakLines</td>
-	      <td>Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).</td>
-	      <td>true</td>
+			<td>breakLines</td>
+			<td>(boolean) Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>breakDelay</td>
-	      <td>The amount of time between typing multiple strings.</td>
-	      <td>750</td>
+			<td>breakDelay</td>
+			<td>(number) The amount of time (milliseconds) between typing multiple strings.</td>
+			<td>750</td>
 	    </tr>
 
 	    <tr>
-	      <td>startDelay</td>
-	      <td>The amount of time before the plugin begins typing after initializing.</td>
-	      <td>250</td>
+			<td>startDelay</td>
+			<td>(number) The amount of time (milliseconds) before the plugin begins typing after initializing.</td>
+			<td>250</td>
 	    </tr>
 
 	    <tr>
-	      <td>loop</td>
-	      <td>Have your string or strings continuously loop after completing.</td>
-	      <td>false</td>
+			<td>startDelete</td>
+			<td>If <span class="code inline">true</span>, strings within the element upon initialization will first be deleted before typing any strings that are defined via JSON. <strong>Requires that a string or strings are defined within the HTML element before initalizing.</strong> Additionally, if you don't define more strings via JSON or by using companion functions, no further typing will take place after these strings are deleted.
+			<br>
+			<br>
+			
+			<span class="code">
+				&lt;span id="element"&gt;This will first be deleted...&lt;/span&gt;
+				<br>
+				<br>
+				$('#element').typeIt({<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startDelete: true,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strings: 'And then this will be typed.'<br>
+				});
+			</span>
+			</td>
+			<td>true</td>
 	    </tr>
 
 	    <tr>
-	      <td>loopDelay</td>
-	      <td>The amount of time between looping over a string or set of strings again. Half of this delay will occur after the remaining strings have been successfully deleted, and half will occur before the strings begin to type again.</td>
-	      <td>750</td>
+			<td>loop</td>
+			<td>(boolean) Have your string or strings continuously loop after completing.</td>
+			<td>false</td>
 	    </tr>
 
 	    <tr>
-	      <td>html</td>
-	      <td>Whether HTML tags and entities will be rendered when typing.</td>
-	      <td>true</td>
+			<td>loopDelay</td>
+			<td>(number) The amount of time (milliseconds) between looping over a string or set of strings again. Half of this delay will occur after the remaining strings have been successfully deleted, and half will occur before the strings begin to type again.</td>
+			<td>750</td>
+	    </tr>
+
+	    <tr>
+			<td>html</td>
+			<td>Whether HTML tags and entities will be rendered when typing.</td>
+			<td>true</td>
 	    </tr>
 
 	   	<tr>
-	      <td>autostart</td>
-	      <td>Whether TypeIt will begin typing automatically on page load (true), or only when the element becomes visible in the viewport (false).</td>
-	      <td>true</td>
+			<td>autoStart</td>
+			<td>Whether TypeIt will begin typing automatically on page load (true), or only when the element becomes visible in the viewport (false).</td>
+			<td>true</td>
 	    </tr>
 
 	   	<tr>
-	      <td>callback</td>
-	      <td>
-	      	A function that executes after your typing has completed. Must be passed as a function. Example: 
+			<td>callback</td>
+			<td>
+			A function that executes after your typing has completed. Must be passed as a function. Example: 
 
-	      	<span class="code">
-	      		// BAD :(<br>
-	      		callback: alert('done!');
-	      	</span>
+			<span class="code">
+				// BAD :(<br>
+				callback: alert('done!');
+			</span>
 
-	      	<span class="code">
-	      		// GOOD :)<br>
-	      		callback: function() {<br>
-	      		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('done!');<br>
-	      		}
-	      	</span>
+			<span class="code">
+				// GOOD :)<br>
+				callback: function() {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('done!');<br>
+				}
+			</span>
 
-	      </td>
-	      <td>nuthin'</td>
+			</td>
+	      <td>(nothing)</td>
 	    </tr>
 
 	</table>

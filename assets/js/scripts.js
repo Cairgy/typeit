@@ -39,7 +39,7 @@ var Promo = {
   headerTyping : function() {
     $('#typeit-box').typeIt({
       speed: 100,
-      startDelay: 1500, 
+      startDelay: 1250, 
       callback: function() {
         $('#typeit-box-code-link').addClass('is-visible');
       }
@@ -196,6 +196,7 @@ var Promo = {
       var startDelay = $('#iStartDelay').val();
       var loop = $('#iLoop').val() === 'true' ? true : false;
       var loopDelay = $('#iLoopDelay').val();
+      var startDelete = $('#iStartDelete').val() === 'true' ? true : false;
 
       // hide the temp text
       $('#tempText').animate({
@@ -224,7 +225,8 @@ var Promo = {
               startDelay: Number(startDelay),
               loop: loop,
               loopDelay: Number(loopDelay),
-              html: html
+              html: html,
+              startDelete: startDelete
             });
         }, 800);
       });
