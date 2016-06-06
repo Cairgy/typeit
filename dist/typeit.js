@@ -21,6 +21,7 @@
     this.d = {
       strings: [],
       speed: 100,
+      deleteSpeed: undefined,
       lifeLike: true,
       cursor: true,
       cursorSpeed: 1000,
@@ -131,8 +132,8 @@
     // do the work that matters
     this.tTO = setTimeout(function() {
 
-      // _randomize the timeout each time, if that's your thing
-      this._random(this);
+      // randomize the timeout each time, if that's your thing
+      this._setPace(this);
 
       // "_print" the character
       // if an opening HTML tag is found and we're not already pringing inside a tag
@@ -161,7 +162,7 @@
         this._executeQueue();
       }
 
-    }.bind(this), this.DT);
+    }.bind(this), this.typePace);
   },
 
   pause : function(time) {
@@ -202,7 +203,7 @@
 
     this.dTO = setTimeout(function() {
 
-      this._random();
+      this._setPace();
 
       var a = this.tel.html().split("");
 
@@ -268,7 +269,7 @@
       } else {
         this._executeQueue();
       }
-    }.bind(this), this.DT/3);
+    }.bind(this), this.deletePace);
   },
 
   _isVisible : function() {
@@ -342,11 +343,21 @@
     }
   },
 
-  _random : function() {
-    var s = this.s.speed;
-    var r = s/2;
-    this.DT = this.s.lifeLike ? Math.abs(Math.random() * ((s+r) - (s-r)) + (s-r)) : s;
+  _setPace : function() {
+    var typeSpeed = this.s.speed;
+    var deleteSpeed = this.s.deleteSpeed !== undefined ? this.s.deleteSpeed : this.s.speed;
+    var range = typeSpeed/2;
+
+    this.typePace = this.s.lifeLike ? this._randomInRange(typeSpeed, range) : typeSpeed;
+    this.deletePace = this.s.lifeLike ? this._randomInRange(deleteSpeed, range) : deleteSpeed;
+
+    console.log('typePace : ' + this.typePace);
+    console.log('deletePace : ' + this.deletePace);
   }, 
+
+  _randomInRange : function(value, range) {
+    return Math.abs(Math.random() * ((value+range) - (value-range)) + (value-range));
+  },
 
   /*
   Convert each string in the array to a sub-array. While happening, search the subarrays for HTML tags. 
