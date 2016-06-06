@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 4.1.0
+ * @version 4.2.0
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -261,7 +261,7 @@
         }
       }
       
-      this.tel.html(a.join(''));
+      this.tel.html(a);
 
       // characters still in the string.
       if (amount > (chars === undefined ? 0 : 2)) {
@@ -345,14 +345,12 @@
 
   _setPace : function() {
     var typeSpeed = this.s.speed;
-    var deleteSpeed = this.s.deleteSpeed !== undefined ? this.s.deleteSpeed : this.s.speed;
-    var range = typeSpeed/2;
+    var deleteSpeed = this.s.deleteSpeed !== undefined ? this.s.deleteSpeed : this.s.speed/3;
+    var typeRange = typeSpeed/2;
+    var deleteRange = deleteSpeed/2;
 
-    this.typePace = this.s.lifeLike ? this._randomInRange(typeSpeed, range) : typeSpeed;
-    this.deletePace = this.s.lifeLike ? this._randomInRange(deleteSpeed, range) : deleteSpeed;
-
-    console.log('typePace : ' + this.typePace);
-    console.log('deletePace : ' + this.deletePace);
+    this.typePace = this.s.lifeLike ? this._randomInRange(typeSpeed, typeRange) : typeSpeed;
+    this.deletePace = this.s.lifeLike ? this._randomInRange(deleteSpeed, deleteRange) : deleteSpeed;
   }, 
 
   _randomInRange : function(value, range) {
