@@ -157,26 +157,18 @@ var Promo = {
       e.preventDefault();
 
       var tiOutput = $('#TIOutput');
-      var curData = tiOutput.data('typeit');
-
-      // if there's another process going on, stop it and wipe the output box
-      if(curData !== undefined) {
-        clearTimeout(curData.tTO);
-        clearTimeout(curData.dTO);
-        curData.s.loop = false;
-        tiOutput.removeData();
-      }
 
       tiOutput.html('');
 
       // get variables figured out
       var strings;
       var cleanedstrings = [];
-      if($('#stringTI').val() === '') {
+      var $textArea = $('#stringTI');
+
+      if($textArea.val() === '') {
         cleanedstrings = 'You didn\'t enter a string!';
       } else {
-        strings = $('#stringTI').val().split('\n');
-        // remove empty array item
+        strings = $textArea.val().split('\n');
         for (var i = 0; i < strings.length; i++) {
           if (strings[i] !== undefined && strings[i] !== null && strings[i] !== "") {
             cleanedstrings.push(strings[i]);
@@ -184,7 +176,7 @@ var Promo = {
         }
       }
 
-      var newHeight = ($('#stringTI').val()) ? (cleanedstrings.length * 38) + 40 : 75;
+      var newHeight = ($textArea.val()) ? (cleanedstrings.length * 38) + 40 : 75;
       var speed = $('#iSpeed').val();
       var html = $('#iHTML').val() === 'true' ? true : false;
       var lifeLike = $('#iLifeLike').val() === 'true' ? true : false;
@@ -202,6 +194,11 @@ var Promo = {
       $('#tempText').animate({
         opacity: 0
       });
+
+      if(startDelete) {
+        $('#TIOutput').html($textArea.val());
+        strings = [];
+      }
 
       // expand the container
       $('#TIOutputBox').animate({
