@@ -6,9 +6,9 @@
  * @description Types out a given string or strings.
  */
 
-"use strict";
-
 (function($, undefined) {
+
+  'use strict';
 
   var $doc = $(document);
 
