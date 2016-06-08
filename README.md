@@ -60,7 +60,7 @@ Get it from this repo, or from the following sources:
   <script src="typeit.js"></script>
   ```
   
-2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="http://macarthur.me/typeit/docs">full documentation.</a>.)
+2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="http://macarthur.me/typeit/docs">full documentation</a>.)
 
   ```html
   <span class="type-it"></span>
